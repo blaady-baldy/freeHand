@@ -5,14 +5,15 @@
         Edit Comment
     </h1>
     <div style="width: 30%; margin: 25px auto;">
-        <form action="/campgrounds/camp_id/comments/<%=comment._id%>?_method=PUT" method="POST">
+        <form action="/campgrounds/camp_id" method="GET">
         <div class=" form-group">
             <input class="form-control" type="text" name="updatedComment" value="comment">
     <div class="form-group">
-        <button class="btn btn-lg btn-primary form-control">Submit</button>
+        <button class="btn btn-lg form-control">Submit</button>
     </div>
     </form>
 </div>
 </div>
 </div>
+
 <%- include('../partials/footer'); %></form>

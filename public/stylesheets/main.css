@@ -2,8 +2,13 @@
     width: 100%;
 }
 
+
 .thumbnail {
     padding: 0;
+    background: #D3CCE3;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 .thumbnail .caption-full{
@@ -16,4 +21,54 @@
 
 #form-button{
     display: inline;
+}
+
+.navbar-header .navbar-brand:hover
+{
+    background-color: #D3CCE3;
+}
+body {
+    background-image: url("paper.gif");
+    background: #D3CCE3;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+   }
+
+.container-fluid{
+    background-image: url("paper.gif");
+    
+}
+
+.form-control {
+    margin: 10px;
+    width:30%;
+    align-items: center;
+}
+
+.new-form{
+    width:100%;
+}
+
+#text-region{
+    height:10vh;
+}
+
+.comment-content{
+    background-color: #eae5f5;
+}
+
+.jumbotron{
+    background: #D3CCE3;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #d5b7ff, #fbf9ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #d5b7ff, #eae5f5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.btn{
+    background-color:#8d3cff;
+    color:white;
+}
+
+.btn:hover{
+    background-color: #b07afc;
 }

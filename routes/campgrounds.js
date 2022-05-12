@@ -1,7 +1,7 @@
-var express = require("express");
-var router = express.Router({mergeParams:true});
-var campgrounds =require("../models/campgrounds");
-var middleware = require("../middleware");
+import { Router } from "express";
+const router = Router({mergeParams:true});
+import campgrounds from "../models/campgrounds.js";
+import middleware from "../middleware/index.js";
 
 router.get("/",function(req,res){
     campgrounds.find({},function(err,allCamps){
@@ -77,4 +77,4 @@ router.delete("/:id", middleware.checkCampgroundOwnership , function( req , res 
     });
 });
 
-module.exports = router;
+export default router;

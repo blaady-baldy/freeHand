@@ -1,8 +1,8 @@
-var express = require("express");
-var router = express.Router({mergeParams:true}); // To pass on the id
-var comments = require("../models/comments");
-var campgrounds =require("../models/campgrounds");
-var middleware = require("../middleware");
+import { Router } from "express";
+var router = Router({mergeParams:true}); // To pass on the id
+import comments from "../models/comments.js";
+import campgrounds from "../models/campgrounds.js";
+import middleware from "../middleware/index.js";
 
 router.get("/new" , middleware.isLoggedIn , function(req,res ){
     campgrounds.findById(req.params.id,function(err,foundCamp){
@@ -51,6 +51,7 @@ router.get("/:comment_id/edit" , middleware.checkCommentOwnership ,function(req 
 });
 
 router.put("/:comment_id" , middleware.checkCommentOwnership, function(req , res ){
+    res.redirect("/campgrounds/" + req.params.id);
     comments.findByIdAndUpdate(req.params.comment_id , req.body.updatedComment , function(err){
         if(err) {
             res.redirect("back");
@@ -63,7 +64,7 @@ router.put("/:comment_id" , middleware.checkCommentOwnership, function(req , res
 router.delete("/:comment_id" , middleware.checkCommentOwnership ,function( req , res){
     comments.findByIdAndRemove(req.params.comment_id , function(err){
         if(err) {
-            res.redirect("back");
+            res.redirect("/campgrounds/" + req.params.id);
         } else {
             res.redirect("/campgrounds/" + req.params.id);
         }
@@ -71,4 +72,4 @@ router.delete("/:comment_id" , middleware.checkCommentOwnership ,function( req ,
 });
 
 
-module.exports = router;
+export default router;

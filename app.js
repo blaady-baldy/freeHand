@@ -2,40 +2,60 @@
 //                                              ADDING FLASH MESSAGES
 //========================================================================================================================
 
-var express                 = require("express"),
-    app                     = express(),
-    bodyParser              = require("body-parser"),
-    mongoose                = require("mongoose"),
-    campgrounds             = require("./models/campgrounds"),
-    seedDb                  = require("./seed"),
-    passport                = require("passport"),
-    User                    = require("./models/user"),
-    LocalStrategy           = require("passport-local"),
-    passportLocalMongoose   = require("passport-local-mongoose"),
-    comments                = require("./models/comments"),
-    campgroundRoutes        = require("./routes/campgrounds"),
-    commentRoutes           = require("./routes/comments"),
-    methodOverride          = require("method-override"),
-    indexRoutes             = require("./routes/index"),
-    flash                   = require("connect-flash");
+import express                 from "express";
+import    bodyParser           from "body-parser";
+import    mongoose             from "mongoose";
+import    passport             from "passport";
+import    User                 from "./models/user.js";
+import    LocalStrategy        from "passport-local";
+import    campgroundRoutes     from "./routes/campgrounds.js";
+import    commentRoutes        from "./routes/comments.js";
+import    methodOverride       from "method-override";
+import    indexRoutes          from "./routes/index.js";
+import    flash                from "connect-flash";
+import expressSession from "express-session";
+import dotenv from 'dotenv';
 
-mongoose.connect("mongodb://localhost:27017/yelp_camp_v3",{useNewUrlParser:true});
+const app = express();
+dotenv.config();
 app.use(bodyParser.urlencoded({extended:true}));
+
+const fetchVideos = async (queryObject) => {
+    const options = {
+     method: 'GET',
+     url: `https://youtube.googleapis.com/youtube/v3/search? part=snippet&maxResults=50&id=${queryObject.channelId}&key=YOUR_API_KEY`
+     };
+    const result = await axios(options)
+    return result.data
+   }
+
+   
                                             // For CSS FILE
-app.use(express.static(__dirname + "/public"));
+// app.use(express.static(__dirname + "/public"));
 app.set("view engine","ejs");
 app.use(methodOverride("_method"));
 app.use(flash());
-//seedDb();
+
+
+const CONNECTION_URL = process.env.URL;
+const PORT = process.env.PORT|| 5000;
+    
+mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))
+    .catch((error) => console.log(`${error} did not connect`));
+    
+
 
 //_____________________________________________________________________________________________________________
 //                                          PASSPORT CONFIGURATION
 //_____________________________________________________________________________________________________________
-app.use(require("express-session")({
+app.use(expressSession({
     secret:"Rusty is the cutest dog",
     resave: false,
     saveUninitialized:false
 }));
+
+app.use(express.static('public'));
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
@@ -63,6 +83,6 @@ app.use("/campgrounds/:id/comments",commentRoutes);
 app.use(indexRoutes);
 
 app.listen(3001,function(){
-    console.log("Connected you son a bitch");
+    console.log("Connected");
 })
 

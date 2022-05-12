@@ -13,7 +13,12 @@ body {
     color: #ffffff;
   }
 
-  /* #square {
+  .btn{
+    background-color:#8d3cff;
+    color:white;
+}
+/* 
+  #square {
     width: 200px;
     height: 200px;
     background-color: coral;
@@ -46,7 +51,7 @@ body {
       background:darksalmon;
       transform:rotate(180deg);
     }
-  } */
+  }  */
 
 
   /* We set the z-index to 1 so all of the elements inside the landing-header div will be in front of the background 
@@ -91,22 +96,22 @@ body {
   }
   
   .slideshow li:nth-child(1) { 
-    background-image: url(http://i.imgur.com/K3mPv14.jpg) 
+    background-image: url(https://thenode.biologists.com/wp-content/uploads/2019/12/Node-Network-Graphic1-e1575627315754.gif) 
   }
   .slideshow li:nth-child(2) { 
-    background-image: url(http://i.imgur.com/SBEmFpv.jpg);
+    background-image: url(https://www.howtogeek.com/wp-content/uploads/csit/2019/07/2350564e.png?width=1198&trim=1,1&bg-color=000&pad=1,1);
     animation-delay: 10s; 
   }
   .slideshow li:nth-child(3) { 
-    background-image: url(http://i.imgur.com/emvhOnb.jpg);
+    background-image: url(https://miro.medium.com/max/1400/1*ptvSdUknyEbemXJOh9wNiw.png);
     animation-delay: 20s; 
   }
   .slideshow li:nth-child(4) { 
-    background-image: url(http://i.imgur.com/2LSMCmJ.jpg);
+    background-image: url(https://res.cloudinary.com/practicaldev/image/fetch/s--KkScstnJ--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zojuy79lo3fn3qdt7g6p.png);
     animation-delay: 30s; 
   }
   .slideshow li:nth-child(5) { 
-    background-image: url(http://i.imgur.com/TVGe0Ef.jpg);
+    background-image: url(https://www.syncfusion.com/blogs/wp-content/uploads/2020/07/Top-6-Front-End-Web-Development-Tools-to-Increase-Your-Productivity-in-2020-1.jpg);
     animation-delay: 40s; 
   }
 

@@ -1,6 +1,6 @@
 var middlewareObj = {};
-var campgrounds = require("../models/campgrounds");
-var comments = require("../models/comments");
+import campgrounds from "../models/campgrounds.js";
+import comments from "../models/comments.js";
 
 
 //_____________________________________________________________________________________________________________
@@ -11,7 +11,7 @@ middlewareObj.checkCampgroundOwnership = function (req , res , next){
     if(req.isAuthenticated()){
         campgrounds.findById(req.params.id , function(err , foundcamp){
             if(err){
-                req.flash("error" , "Campground not found");
+                req.flash("error" , "Course not found");
                 req.redirect("back");
             } else {
                 if(foundcamp.author.id.equals(req.user._id)){
@@ -64,4 +64,4 @@ middlewareObj.isLoggedIn = function(req, res ,next){
     res.redirect("/login");
 }
 
-module.exports = middlewareObj;
+export default middlewareObj;
